@@ -14,7 +14,8 @@ Order port numbers, ex:
 # CAN
 
 # PWM
-
+shooter_motor_left = 0
+shooter_motor_right = 1
 # DIO
 
 # PCM
