@@ -12,10 +12,11 @@ Order port numbers, ex:
 """
 
 # CAN
+turret_motor = 1
 
 # PWM
 
 # DIO
-
+turret_switch = 0
 # PCM
 
