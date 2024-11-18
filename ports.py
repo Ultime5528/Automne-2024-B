@@ -19,4 +19,5 @@ shooter_motor_right = 1
 # DIO
 
 # PCM
-
+shooter_piston_forward=0
+shooter_piston_backward=1

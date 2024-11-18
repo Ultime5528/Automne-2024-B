@@ -2,7 +2,6 @@ import wpilib
 
 import ports
 from utils.safesubsystem import SafeSubsystem
-from utils.sparkmaxutils import configureLeader, configureFollower
 
 
 class Shooter(SafeSubsystem):
@@ -11,11 +10,16 @@ class Shooter(SafeSubsystem):
 
         self.left_motor = wpilib.VictorSP(ports.shooter_motor_left)
 
-        configureLeader(self.left_motor, mode="coast")
+
 
         self.right_motor = wpilib.VictorSP(ports.shooter_motor_right)
 
-        configureFollower(self.right_motor, self.left_motor,mode="coast", inverted=True)
+        self.right_motor.setInverted(isInverted=True)
+
+        self.left_motor.adFollower(self.right_motor)
+
+
+
 
     def shoot(self, speed):
         self.left_motor.set(speed)
@@ -23,3 +27,4 @@ class Shooter(SafeSubsystem):
 
     def stop(self):
         self.left_motor.stopMotor()
+
