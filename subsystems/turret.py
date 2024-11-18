@@ -26,13 +26,13 @@ class Turret(SafeSubsystem):
     def turn(self, speed):
         self.motor.set(speed)
 
-    def isswitchpressed(self):
+    def isSwitchpressed(self):
         self.switch.isPressed()
 
     def stop(self):
         self.motor.stopMotor()
 
-    def getangle(self):
+    def getAngle(self):
        return self.encoder.getPosition()
 
 
