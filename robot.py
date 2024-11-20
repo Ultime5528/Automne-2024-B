@@ -3,7 +3,8 @@ from typing import Optional
 
 import commands2.button
 import wpilib
-
+from commands.prepshooter import PrepFlywheels
+from subsystems.shooter import Shooter
 
 class Robot(commands2.TimedCommandRobot):
     def __init__(self):
@@ -46,7 +47,7 @@ class Robot(commands2.TimedCommandRobot):
         """
         Bind commands to buttons on controllers and joysticks
         """
-        pass
+
     def setupDashboard(self):
         """
         Send commands to dashboard to
@@ -63,5 +64,7 @@ class Robot(commands2.TimedCommandRobot):
             self.auto_command.cancel()
 
 
+
 if __name__ == "__main__":
     wpilib.run(Robot)
+
