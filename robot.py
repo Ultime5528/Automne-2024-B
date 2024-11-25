@@ -3,7 +3,7 @@ from typing import Optional
 
 import commands2.button
 import wpilib
-from commands.prepshooter import PrepFlywheels
+from commands.prepshooter import PrepShooter
 from subsystems.shooter import Shooter
 
 class Robot(commands2.TimedCommandRobot):

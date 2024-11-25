@@ -14,3 +14,7 @@ class PrepShooter(SafeCommand):
 
     def end(self):
         self.shooter.stop()
+
+
+class PrepFlywheels:
+    pass
