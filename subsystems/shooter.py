@@ -19,12 +19,9 @@ class Shooter(SafeSubsystem):
 
         self.left_motor.addFollower(self.right_motor)
 
-        is_running = False
 
     def shoot(self):
-        is_running = True
         self.left_motor.set(self.speed)
 
     def stop(self):
-        is_running = False
         self.left_motor.stopMotor()

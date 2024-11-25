@@ -1,4 +1,5 @@
-from typing import Final
+"""from typing import Final"""
+
 
 """
 Respect the naming convention : "subsystem" _ "component type" _ "precision"

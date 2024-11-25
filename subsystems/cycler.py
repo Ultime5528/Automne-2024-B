@@ -18,8 +18,10 @@ class Cycler(SafeSubsystem):
     def goForward(self):
         self.piston.set(wpilib.DoubleSolenoid.Value.kForward)
 
+
     def goBackward(self):
         self.piston.set(wpilib.DoubleSolenoid.Value.kReverse)
+
 
     def stop(self):
         self.piston.set(wpilib.DoubleSolenoid.Value.kOff)
