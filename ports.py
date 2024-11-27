@@ -16,7 +16,8 @@ turret_motor = 1
 
 
 # PWM
-pivot_motor=0
+pivot_motor = 0
+
 # DIO
 turret_switch = 0
 pivot_switch = 1
