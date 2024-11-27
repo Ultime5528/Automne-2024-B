@@ -1,18 +1,21 @@
 import wpilib
 
-from subsystems.pivot import Pivot
+from subsystems.turret import Turret
 from utils.property import autoproperty
 from utils.safecommand import SafeCommand
 
 
-class Extend(SafeCommand):
+class Rotate(SafeCommand):
     delay = autoproperty(0.3)
 
-    def __init__(self, pivot: Pivot):
+    def __init__(self, turret: Turret, speed:int):
         super().__init__()
-        self.pivot = pivot
+        self.turret = turret
 
     def initialize(self):
+        pass
+
+    def E(self):
         pass
 
 
