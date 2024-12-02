@@ -21,7 +21,7 @@ class Retract(SafeCommand):
         self.cycler.goBackward()
 
     def isFinished(self):
-        return self.timer.get >= self.delay
+        return self.timer.get() >= self.delay
 
-    def end(self):
+    def end(self, interrupted: bool):
         self.cycler.stop()

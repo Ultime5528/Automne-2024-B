@@ -3,14 +3,17 @@ from typing import Optional
 
 import commands2.button
 import wpilib
+
+from commands.launch import Launch
 from commands.prepshooter import PrepShooter
+from subsystems.cycler import Cycler
 from subsystems.shooter import Shooter
+
 
 class Robot(commands2.TimedCommandRobot):
     def __init__(self):
         super().__init__()
         wpilib.LiveWindow.enableAllTelemetry()
-        wpilib.LiveWindow.setEnabled(True)
         wpilib.DriverStation.silenceJoystickConnectionWarning(True)
 
         """
@@ -27,11 +30,14 @@ class Robot(commands2.TimedCommandRobot):
         """
         Subsystems
         """
-
+        self.shooter = Shooter()
+        self.cycler = Cycler()
         """
         Default subsystem commands
         """
-
+        self.shooter.setDefaultCommand(
+            PrepShooter(self.shooter)
+        )
         """
         Setups
         """
@@ -47,6 +53,7 @@ class Robot(commands2.TimedCommandRobot):
         """
         Bind commands to buttons on controllers and joysticks
         """
+        self.xbox_controller.button(1).onTrue(Launch(self.cycler))
 
     def setupDashboard(self):
         """

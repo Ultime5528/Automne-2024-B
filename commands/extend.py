@@ -21,7 +21,7 @@ class Extend(SafeCommand):
         self.cycler.goForward()
 
     def isFinished(self):
-        return self.timer.get >= self.delay
+        return self.timer.get() >= self.delay
 
-    def end(self):
+    def end(self, interrupted: bool):
         self.cycler.stop()
