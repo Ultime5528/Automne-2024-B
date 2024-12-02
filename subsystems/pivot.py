@@ -1,5 +1,6 @@
 import wpilib
 
+from utils.property import autoproperty
 from utils.switch import Switch
 
 import ports
@@ -7,6 +8,7 @@ from utils.safesubsystem import SafeSubsystem
 
 
 class Pivot(SafeSubsystem):
+    joystick_threshold = autoproperty(0.015)
 
     def __init__(self):
         super().__init__()
@@ -16,8 +18,12 @@ class Pivot(SafeSubsystem):
         self.switch = Switch(Switch.Type.NormallyOpen, ports.pivot_switch)
 
     def move(self, speed):
-        if speed >= 0.0 or not self.switch.isPressed():
-            self.motor.set(speed)
+        if abs(speed) >= self.joystick_threshold:
+            if speed >= 0.0 or not self.switch.isPressed():
+                self.motor.set(speed)
+
+        else:
+            self.motor.set(0.0)
 
     def isSwitchPressed(self):
         self.switch.isPressed()
