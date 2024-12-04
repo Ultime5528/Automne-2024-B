@@ -1,4 +1,4 @@
-from typing import Final
+"""from typing import Final"""
 
 """
 Respect the naming convention : "subsystem" _ "component type" _ "precision"
@@ -12,10 +12,14 @@ Order port numbers, ex:
 """
 
 # CAN
+turret_motor = 1
+
 
 # PWM
+pivot_motor = 0
 
 # DIO
-
+turret_switch = 0
+pivot_switch = 1
 # PCM
 

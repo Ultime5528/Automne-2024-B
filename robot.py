@@ -4,12 +4,17 @@ from typing import Optional
 import commands2.button
 import wpilib
 
+from commands.moveturret import MoveTurret
+from commands.movepivot import MovePivot
+from subsystems.pivot import Pivot
+from subsystems.turret import Turret
+
 
 class Robot(commands2.TimedCommandRobot):
     def __init__(self):
         super().__init__()
         wpilib.LiveWindow.enableAllTelemetry()
-        wpilib.LiveWindow.setEnabled(True)
+        # wpilib.LiveWindow.setEnabled(True)
         wpilib.DriverStation.silenceJoystickConnectionWarning(True)
 
         """
@@ -26,10 +31,17 @@ class Robot(commands2.TimedCommandRobot):
         """
         Subsystems
         """
-
+        self.pivot = Pivot()
+        self.turret = Turret()
         """
         Default subsystem commands
         """
+        self.pivot.setDefaultCommand(
+            MovePivot(self.pivot, self.xbox_controller)
+        )
+        self.turret.setDefaultCommand(
+            MoveTurret(self.turret, self.xbox_controller)
+        )
 
         """
         Setups
@@ -47,6 +59,7 @@ class Robot(commands2.TimedCommandRobot):
         Bind commands to buttons on controllers and joysticks
         """
         pass
+
     def setupDashboard(self):
         """
         Send commands to dashboard to
