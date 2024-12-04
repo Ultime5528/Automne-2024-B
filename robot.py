@@ -4,6 +4,10 @@ from typing import Optional
 import commands2.button
 import wpilib
 
+from commands.launch import Launch
+from commands.prepshooter import PrepShooter
+from subsystems.cycler import Cycler
+from subsystems.shooter import Shooter
 from commands.moveturret import MoveTurret
 from commands.movepivot import MovePivot
 from subsystems.pivot import Pivot
@@ -31,11 +35,17 @@ class Robot(commands2.TimedCommandRobot):
         """
         Subsystems
         """
-        self.pivot = Pivot()
+
+        self.shooter = Shooter()
+        self.cycler = Cycler()
+    self.pivot = Pivot()
         self.turret = Turret()
         """
         Default subsystem commands
         """
+        self.shooter.setDefaultCommand(
+            PrepShooter(self.shooter)
+        )
         self.pivot.setDefaultCommand(
             MovePivot(self.pivot, self.xbox_controller)
         )
@@ -58,7 +68,9 @@ class Robot(commands2.TimedCommandRobot):
         """
         Bind commands to buttons on controllers and joysticks
         """
-        pass
+
+        self.xbox_controller.button(1).onTrue(Launch(self.cycler)
+
 
     def setupDashboard(self):
         """
@@ -76,5 +88,7 @@ class Robot(commands2.TimedCommandRobot):
             self.auto_command.cancel()
 
 
+
 if __name__ == "__main__":
     wpilib.run(Robot)
+
