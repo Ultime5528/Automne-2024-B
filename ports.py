@@ -13,12 +13,19 @@ Order port numbers, ex:
 """
 
 # CAN
+turret_motor = 1
+
 
 # PWM
+
 shooter_motor_left = 0
 shooter_motor_right = 1
-# DIO
+pivot_motor = 2
 
+
+# DIO
+turret_switch = 0
+pivot_switch = 1
 # PCM
 shooter_piston_forward=0
 shooter_piston_backward=1
