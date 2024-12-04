@@ -25,7 +25,7 @@ class MovePivot(SafeCommand):
     def isFinished(self):
         return False
 
-    def end(self):
+    def end(self, interrupted: bool):
         self.pivot.stop()
 
 

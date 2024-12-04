@@ -29,5 +29,5 @@ class Pivot(SafeSubsystem):
         self.switch.isPressed()
 
     def stop(self):
-        self.motor.set(0)
+        self.motor.stopMotor()
 
