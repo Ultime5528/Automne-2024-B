@@ -6,7 +6,7 @@ from utils.safesubsystem import SafeSubsystem
 
 
 class Shooter(SafeSubsystem):
-    speed = autoproperty(1)
+    speed = autoproperty(-0.3)
 
     def __init__(self):
         super().__init__()
@@ -17,11 +17,12 @@ class Shooter(SafeSubsystem):
 
         self.right_motor.setInverted(isInverted=True)
 
-        self.left_motor.addFollower(self.right_motor)
-
+        # self.left_motor.addFollower(self.right_motor)
 
     def shoot(self):
         self.left_motor.set(self.speed)
+        self.right_motor.set(self.speed)
 
     def stop(self):
         self.left_motor.stopMotor()
+        self.right_motor.stopMotor()

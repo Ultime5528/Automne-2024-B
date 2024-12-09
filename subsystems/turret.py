@@ -1,4 +1,5 @@
 import rev
+from wpiutil import SendableBuilder
 
 from utils.property import autoproperty
 from utils.switch import Switch
@@ -30,9 +31,8 @@ class Turret(SafeSubsystem):
 
     def turn(self, speed):
         if abs(speed) > self.joystick_threshold:
-            if self.isDanger() is False or not self.switch.isPressed():
+            if not self.isDanger() or not self.switch.isPressed():
                 self.motor.set(speed)
-
             else:
                 self.motor.set(0.0)
         else:
@@ -42,8 +42,15 @@ class Turret(SafeSubsystem):
         encoder_next_pos = self.encoder.getPosition() + self.motor.get()
         self.encoder.setPosition(encoder_next_pos)
 
-    def isSwitchPressed(self):
-        self.switch.isPressed()
+    def isSwitchPressed(self) -> bool:
+        return self.switch.isPressed()
 
     def stop(self):
         self.motor.stopMotor()
+
+    def initSendable(self, builder: SendableBuilder) -> None:
+        def noop(_): pass
+        builder.addBooleanProperty("isSwitchPressed", lambda: self.isSwitchPressed(), noop)
+        builder.addFloatProperty("encoderPosition", lambda: self.encoder.getPosition(), noop)
+        builder.addFloatProperty("isDanger", lambda: self.isDanger(), noop)
+        builder.addFloatProperty("motor.get()", lambda: self.motor.get(), noop)

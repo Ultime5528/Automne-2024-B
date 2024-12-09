@@ -10,6 +10,6 @@ class Launch(SequentialCommandGroup, SafeMixin):
     def __init__(self, cycler: Cycler):
         super().__init__(
             Extend(cycler),
-            WaitCommand(0.15),
+            WaitCommand(1),
             Retract(cycler)
         )

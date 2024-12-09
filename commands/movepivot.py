@@ -6,7 +6,7 @@ from subsystems.pivot import Pivot
 
 
 class MovePivot(SafeCommand):
-    convertion_rate = autoproperty(0.5)
+    convertion_rate = autoproperty(0.1)
 
     def __init__(
         self,

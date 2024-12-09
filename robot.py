@@ -38,7 +38,7 @@ class Robot(commands2.TimedCommandRobot):
 
         self.shooter = Shooter()
         self.cycler = Cycler()
-    self.pivot = Pivot()
+        self.pivot = Pivot()
         self.turret = Turret()
         """
         Default subsystem commands
@@ -69,15 +69,15 @@ class Robot(commands2.TimedCommandRobot):
         Bind commands to buttons on controllers and joysticks
         """
 
-        self.xbox_controller.button(1).onTrue(Launch(self.cycler)
+        self.xbox_controller.button(1).onTrue(Launch(self.cycler))
 
 
     def setupDashboard(self):
         """
         Send commands to dashboard to
         """
-        pass
-          
+        wpilib.SmartDashboard.putData("Turret", self.turret)
+
     def autonomousInit(self):
         self.auto_command: commands2.Command = self.auto_chooser.getSelected()
         if self.auto_command:

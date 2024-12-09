@@ -6,7 +6,7 @@ from utils.safecommand import SafeCommand
 
 
 class Extend(SafeCommand):
-    delay = autoproperty(0.3)
+    delay = autoproperty(2)
 
     def __init__(self, cycler: Cycler):
         super().__init__()

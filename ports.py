@@ -18,9 +18,9 @@ turret_motor = 1
 
 # PWM
 
-shooter_motor_left = 0
-shooter_motor_right = 1
-pivot_motor = 2
+shooter_motor_left = 2
+shooter_motor_right = 0
+pivot_motor = 1
 
 
 # DIO

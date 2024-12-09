@@ -15,7 +15,7 @@ class Pivot(SafeSubsystem):
 
         self.motor = wpilib.VictorSP(ports.pivot_motor)
 
-        self.switch = Switch(Switch.Type.NormallyOpen, ports.pivot_switch)
+        self.switch = Switch(Switch.Type.NormallyClosed, ports.pivot_switch)
 
     def move(self, speed):
         if abs(speed) >= self.joystick_threshold:
